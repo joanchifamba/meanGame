@@ -2,7 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const app = express();
 const path = require("path");
-const routes= require("./routes");
+const routes= require("./api/routes");
 
 
 app.use(function(req,res,next){
@@ -12,6 +12,9 @@ app.use(function(req,res,next){
 app.use(express.static(path.join(__dirname, process.env.PUBLIC_FOLDER)));
 app.use("/",routes);
 app.use("/json",routes);
+app.use("/games",routes);
+
+app.use("/games/:gameId",routes);
 
 
 const server= app.listen(process.env.PORT, function(){
