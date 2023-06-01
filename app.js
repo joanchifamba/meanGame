@@ -10,6 +10,9 @@ app.use(function(req,res,next){
     next();
 })
 app.use(express.static(path.join(__dirname, process.env.PUBLIC_FOLDER)));
+app.use(express.json());
+app.use(express.urlencoded({extended:false}))
+
 app.use("/",routes);
 app.use("/json",routes);
 app.use("/games",routes);
