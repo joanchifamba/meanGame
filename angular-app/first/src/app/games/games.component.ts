@@ -1,23 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GamesDataService } from '../games-data.service';
 
-
-@Component({
-  selector: 'app-games',
-  templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css']
-})
-export class GamesComponent implements OnInit {
-  games: Game[] = []
-  constructor(private gamesService: GamesDataService) { }
-  ngOnInit(): void {
-    this.gamesService.getGames()
-    .subscribe((games: Game[]) => {
-      this.games = games;
-    });
-  }
-}
-
 export class Game {
   #_id!: string;
   #title!: string;
@@ -36,4 +19,26 @@ export class Game {
   get minPlayers() { return this.#minPlayers; }
   get maxPlayers() { return this.#maxPlayers; }
   get minAge() { return this.#minAge; }
+  constructor(){}
 }
+
+@Component({
+  selector: 'app-games',
+  templateUrl: './games.component.html',
+  styleUrls: ['./games.component.css']
+})
+export class GamesComponent implements OnInit {
+
+  games: Game[] = []
+
+  constructor(private gamesService: GamesDataService) { }
+  ngOnInit(): void {
+    this.gamesService.getGames()
+    .subscribe((games: Game[]) => {
+      this.games = games;
+      console.log(games)
+    });
+  }
+}
+
+

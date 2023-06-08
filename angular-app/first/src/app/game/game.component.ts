@@ -14,6 +14,7 @@ export class GameComponent {
   this.game= new Game(); }
   ngOnInit(): void {
   const gameId= this.route.snapshot.params["gameId"]; 
+  console.log(gameId)
   this.gameService.getGame(gameId).subscribe((game: Game) => {
   this.game= game; 
 });

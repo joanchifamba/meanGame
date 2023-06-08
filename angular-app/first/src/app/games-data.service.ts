@@ -8,7 +8,7 @@ import { Game } from './games/games.component';
   providedIn: 'root'
 })
 export class GamesDataService {
-  baseUrl!: string;
+  baseUrl: string="http://localhost:3000";
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class GamesDataService {
   }
 
   public getGame(id: string): Observable<Game> {
-    const url: string = this.baseUrl + "games/" + id;
+    const url: string = this.baseUrl + "/games/" + id;
     return this.http.get<Game>(url);
   }
 

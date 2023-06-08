@@ -38,7 +38,7 @@ import { GamesDataService } from './games-data.service';
 
 
   ],
-  providers: [GamesDataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
